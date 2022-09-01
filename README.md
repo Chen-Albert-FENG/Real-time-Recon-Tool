@@ -33,6 +33,8 @@ conda remove opencv
 conda install -c menpo opencv
 pip install opencv-contrib-python
 ```
+5.Requirement
+* Make sure 11G memory in your GPU. Example is based on Nvidia RTX 3090.
 
 ## Compile extensions
 ```shell
