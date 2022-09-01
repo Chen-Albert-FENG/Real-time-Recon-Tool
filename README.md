@@ -7,6 +7,10 @@ conda env create -f recon.yaml
 pip install evo --upgrade --no-binary evo
 pip install gdown
 ```
+
+* pretrained checkpoints
+[DROID-SLAM-pth](https://drive.google.com/file/d/1RvKCXebZ3gQw67eoOgiDzeoEhPAKBu4c/view?usp=sharing)
+[CDS-MVSNet-pth](https://drive.google.com/file/d/1gKwyW8NnGQV7Xu5-EkRBvnDJGq4y83yg/view?usp=sharing)
 ### Here some tips for successful compilation.
 
 1. Soft link of Eigen
