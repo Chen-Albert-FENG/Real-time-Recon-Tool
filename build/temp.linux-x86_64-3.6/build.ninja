@@ -1,0 +1,29 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /usr/local/cuda-11.3/bin/nvcc
+
+cflags = -pthread -B /home/albert/anaconda3/envs/cds_mvs/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/home/albert/Network/DROID-SLAM/thirdparty/eigen -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include/torch/csrc/api/include -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include/TH -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include/THC -I/usr/local/cuda-11.3/include -I/home/albert/anaconda3/envs/cds_mvs/include/python3.6m -c
+post_cflags = -O3 -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=droid_backends -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14
+cuda_cflags = -I/home/albert/Network/DROID-SLAM/thirdparty/eigen -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include/torch/csrc/api/include -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include/TH -I/home/albert/anaconda3/envs/cds_mvs/lib/python3.6/site-packages/torch/include/THC -I/usr/local/cuda-11.3/include -I/home/albert/anaconda3/envs/cds_mvs/include/python3.6m -c
+cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -gencode=arch=compute_60,code=sm_60 -gencode=arch=compute_61,code=sm_61 -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -gencode=arch=compute_80,code=sm_80 -gencode=arch=compute_86,code=sm_86 -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=droid_backends -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  command = $nvcc $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+build /home/albert/Network/DROID-SLAM/build/temp.linux-x86_64-3.6/src/droid.o: compile /home/albert/Network/DROID-SLAM/src/droid.cpp
+build /home/albert/Network/DROID-SLAM/build/temp.linux-x86_64-3.6/src/droid_kernels.o: cuda_compile /home/albert/Network/DROID-SLAM/src/droid_kernels.cu
+build /home/albert/Network/DROID-SLAM/build/temp.linux-x86_64-3.6/src/correlation_kernels.o: cuda_compile /home/albert/Network/DROID-SLAM/src/correlation_kernels.cu
+build /home/albert/Network/DROID-SLAM/build/temp.linux-x86_64-3.6/src/altcorr_kernel.o: cuda_compile /home/albert/Network/DROID-SLAM/src/altcorr_kernel.cu
+
+
+
+
+

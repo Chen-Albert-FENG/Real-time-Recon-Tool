@@ -1,0 +1,11 @@
+LICENSE
+README.md
+setup.py
+droid_backends.egg-info/PKG-INFO
+droid_backends.egg-info/SOURCES.txt
+droid_backends.egg-info/dependency_links.txt
+droid_backends.egg-info/top_level.txt
+src/altcorr_kernel.cu
+src/correlation_kernels.cu
+src/droid.cpp
+src/droid_kernels.cu
