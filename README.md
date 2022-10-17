@@ -9,7 +9,7 @@ pip install gdown
 ```
 
 * pretrained checkpoints
-[DROID-SLAM-pth](https://drive.google.com/file/d/1RvKCXebZ3gQw67eoOgiDzeoEhPAKBu4c/view?usp=sharing)
+[DROID-SLAM-pth](https://drive.google.com/file/d/1RvKCXebZ3gQw67eoOgiDzeoEhPAKBu4c/view?usp=sharing),
 [CDS-MVSNet-pth](https://drive.google.com/file/d/1gKwyW8NnGQV7Xu5-EkRBvnDJGq4y83yg/view?usp=sharing)
 ### Here some tips for successful compilation.
 
@@ -45,3 +45,5 @@ python setup.py install
 ```shell
 python demo.py --imagedir=data/xxx(imgs) --calib=calib/xxx.txt(intrinsic) --stride=2 --buffer 384 --mvsnet_ckpt cds_mvsnet.pth
 ```
+[demo_0](https://www.youtube.com/watch?v=TY_y1AmOvuA),
+[demo_1](https://www.youtube.com/watch?v=31lwz_Hn4Us)
