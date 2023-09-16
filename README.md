@@ -35,6 +35,9 @@ pip install opencv-contrib-python
 ```
 5.Requirement
 * Make sure 11G memory in your GPU. Example is based on Nvidia RTX 3090.
+```shell
+pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
+```
 
 ## Compile extensions
 ```shell
